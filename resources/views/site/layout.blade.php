@@ -12,16 +12,16 @@
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
       @foreach($categoriasMenu as $categoriaM)
-      <li><a href="#!">{{ $categoriaM->nome }}</a></li>
+      <li><a href="{{ route('site.categoria', $categoriaM->id) }}">{{ $categoriaM->nome }}</a></li>
       @endforeach
     </ul>
     <nav class="red">
         <div class="nav-wrapper container">
           <a href="#" class="brand-logo center">Curso de Laravel</a>
           <ul id="nav-mobile" class="left">
-            <li><a href="">Home</a></li>
+            <li><a href="{{ route('site.index') }}">Home</a></li>
             <li><a href="a" class="dropdown-trigger" data-target="dropdown1">Categorias<i class="material-icons right">expand_more</i></a></li>
-            <li><a href="">Carrinho</a></li>
+            <li><a href="{{ route('site.carrinho') }}">Carrinho <span class="new badge blue" data-badge-caption=""> {{ \Cart::getContent()->count() }} </span></a></li>
           </ul>
         </div>
     </nav>
