@@ -10,7 +10,7 @@
 
 @include('admin.produtos.create')
 
-<div class="row container crud">    
+<div class="row container crud">
     <div class="row titulo ">              
         <h1 class="left">Produtos</h1>
         <span class="right chip">{{ $produtos->count() }} produtos exibidos nesta página</span>  
@@ -27,13 +27,13 @@
         </div>
     </nav>
     <div class="card z-depth-4 registros" >
+        @include('admin.includes.mensagens')
         <table class="striped ">
             <thead>
                 <tr>
-                <th></th>
-                <th>ID</th>  
-                <th>Produto</th>
-                    
+                    <th></th>
+                    <th>ID</th>  
+                    <th>Produto</th>
                     <th>Preço</th>
                     <th>Categoria</th>
                     <th></th>
@@ -42,7 +42,7 @@
             <tbody>
                 @foreach($produtos as $produto)
                 <tr>
-                    <td><img src="{{ $produto->imagem }}" class="circle "></td>
+                    <td><img src="{{ url("storage/{$produto->imagem}") }}" class="circle "></td>
                     <td>{{ $produto->id }}</td>
                     <td>{{ $produto->nome }}</td>                    
                     <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
